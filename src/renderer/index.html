@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agenda RH</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="toolbar" aria-label="Controles da agenda">
+        <div>
+          <h1>Agenda RH</h1>
+          <p>Demandas de entrevistas e processos seletivos</p>
+        </div>
+        <form id="filters" class="filters">
+          <input id="search" name="search" type="search" placeholder="Buscar candidato, funcao ou obs." />
+          <select id="statusFilter" name="hired" aria-label="Filtrar contratados">
+            <option value="">Todos</option>
+            <option value="Sim">Contratados</option>
+            <option value="Não">Nao contratados</option>
+            <option value="Pendente">Pendentes</option>
+          </select>
+          <button type="button" id="newProcess">Novo processo</button>
+        </form>
+      </section>
+
+      <section class="table-wrap" aria-label="Tabela de processos seletivos">
+        <table>
+          <thead>
+            <tr>
+              <th>Data mensagem</th>
+              <th>Data agendada</th>
+              <th>Horario</th>
+              <th>Nome</th>
+              <th>Funcao</th>
+              <th>Confirmou presenca</th>
+              <th>Compareceu</th>
+              <th>Como ficou sabendo</th>
+              <th>Aprovado</th>
+              <th>Quem agendou</th>
+              <th>Quem atendeu</th>
+              <th>Contratado(a)</th>
+              <th>Obs.</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="processRows"></tbody>
+        </table>
+      </section>
+    </main>
+
+    <dialog id="processDialog">
+      <form id="processForm" method="dialog">
+        <div class="dialog-head">
+          <h2 id="dialogTitle">Novo processo</h2>
+          <button type="button" class="icon-button" id="closeDialog" aria-label="Fechar">x</button>
+        </div>
+        <div class="form-grid">
+          <label>Data mensagem <input name="messageDate" type="date" required /></label>
+          <label>Data agendada <input name="scheduledDate" type="date" required /></label>
+          <label>Horario <input name="time" type="time" required /></label>
+          <label>Nome <input name="name" type="text" required /></label>
+          <label>Funcao <input name="role" type="text" required /></label>
+          <label>Confirmou presenca <select name="confirmedPresence"></select></label>
+          <label>Compareceu <select name="attended"></select></label>
+          <label>Como ficou sabendo <input name="source" type="text" /></label>
+          <label>Aprovado <select name="approved"></select></label>
+          <label>Quem agendou <input name="scheduledBy" type="text" /></label>
+          <label>Quem atendeu <input name="attendedBy" type="text" /></label>
+          <label>Contratado(a) <select name="hired"></select></label>
+          <label class="full">Obs. <textarea name="notes" rows="3"></textarea></label>
+        </div>
+        <div class="dialog-actions">
+          <button type="button" id="cancelForm">Cancelar</button>
+          <button type="submit">Salvar</button>
+        </div>
+      </form>
+    </dialog>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,234 @@
+:root {
+  --blue: #08a8d8;
+  --blue-dark: #087aa0;
+  --line: #202020;
+  --bg: #f2f5f7;
+  --text: #1d252c;
+  --muted: #60717d;
+  --green: #c7efcf;
+  --red: #ffc9c9;
+  --yellow: #fff1b8;
+  --white: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 1024px;
+  color: var(--text);
+  background: var(--bg);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.app-shell {
+  min-height: 100vh;
+  padding: 18px;
+}
+
+.toolbar {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 14px;
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+h1 {
+  font-size: 24px;
+}
+
+.toolbar p {
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.filters {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+input,
+select,
+textarea,
+button {
+  border: 1px solid #b8c4cc;
+  border-radius: 6px;
+  color: var(--text);
+  font: inherit;
+}
+
+input,
+select,
+textarea {
+  background: var(--white);
+  padding: 8px 10px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+button {
+  cursor: pointer;
+  padding: 8px 12px;
+  background: var(--blue);
+  border-color: var(--blue-dark);
+  color: var(--white);
+  font-weight: 700;
+}
+
+button.secondary,
+#cancelForm {
+  background: #eef3f6;
+  color: var(--text);
+  border-color: #c7d2d9;
+}
+
+.table-wrap {
+  overflow: auto;
+  border: 1px solid var(--line);
+  background: var(--white);
+}
+
+table {
+  width: 100%;
+  min-width: 1480px;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 12px;
+}
+
+th,
+td {
+  border: 1px solid var(--line);
+  padding: 4px 6px;
+  line-height: 1.25;
+  vertical-align: middle;
+}
+
+th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  height: 40px;
+  background: var(--blue);
+  color: var(--white);
+  text-transform: uppercase;
+  font-size: 11px;
+}
+
+td {
+  background: var(--white);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.status {
+  text-align: center;
+  font-weight: 700;
+}
+
+.status.sim {
+  background: var(--green);
+  color: #0f6c2b;
+}
+
+.status.nao {
+  background: var(--red);
+  color: #9a1616;
+}
+
+.status.pendente {
+  background: var(--yellow);
+  color: #705600;
+}
+
+.row-actions {
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+}
+
+.row-actions button,
+.icon-button {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border-radius: 4px;
+}
+
+dialog {
+  width: min(920px, calc(100vw - 48px));
+  border: 0;
+  border-radius: 8px;
+  padding: 0;
+  box-shadow: 0 24px 80px rgba(20, 30, 40, 0.25);
+}
+
+dialog::backdrop {
+  background: rgba(12, 20, 26, 0.45);
+}
+
+#processForm {
+  padding: 18px;
+}
+
+.dialog-head,
+.dialog-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.dialog-head {
+  margin-bottom: 16px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+label {
+  display: grid;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+label > input,
+label > select,
+label > textarea {
+  width: 100%;
+  color: var(--text);
+  font-weight: 400;
+}
+
+.full {
+  grid-column: 1 / -1;
+}
+
+.dialog-actions {
+  justify-content: end;
+  margin-top: 18px;
+}
+
+.empty {
+  height: 160px;
+  text-align: center;
+  color: var(--muted);
+}

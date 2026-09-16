@@ -1,0 +1,49 @@
+{
+  "name": "sistema-agendamento-entrevista",
+  "version": "0.1.0",
+  "description": "Sistema desktop para o RH organizar demandas de processos seletivos.",
+  "main": "src/electron/main.js",
+  "scripts": {
+    "dev": "concurrently \"npm:dev:api\" \"npm:dev:electron\"",
+    "dev:api": "node src/backend/server.js",
+    "dev:electron": "wait-on http://localhost:3333/health && electron .",
+    "start": "node src/backend/server.js",
+    "electron": "electron .",
+    "package": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "keywords": [
+    "rh",
+    "entrevistas",
+    "electron",
+    "mongodb"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongoose": "^8.5.3"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "electron": "^31.3.1",
+    "electron-builder": "^24.13.3",
+    "wait-on": "^7.2.0"
+  },
+  "build": {
+    "appId": "br.com.rh.agendamentoentrevista",
+    "productName": "Agenda RH",
+    "files": [
+      "src/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "output": "release"
+    },
+    "win": {
+      "target": "nsis"
+    }
+  }
+}
